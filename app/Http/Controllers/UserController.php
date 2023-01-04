@@ -5,18 +5,23 @@ namespace App\Http\Controllers;
 use App\{Position, RankGroup, Role, user, Unit};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class UserController extends Controller
 {
     public function index()
     {
         //load data
+       
         $users = user::all();
         $login = Auth::user();
+        // DB::enableQueryLog();
         //buka halaman dan kirim data, kirim data = compactif
-        if($login->role_id == 2){
+        if($login->role_id == 3){
+            // dd(DB::getQueryLog());
             $users = user::whereIn('position_id',$login->bawahan())->whereIn('unit_id',$login->unitTugas())->get();
         }
+        
         return view('kelolauser.index', compact('users'));
 
     }

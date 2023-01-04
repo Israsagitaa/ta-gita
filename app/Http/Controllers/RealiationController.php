@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Realiation;
 use App\Target;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,11 +14,14 @@ class RealiationController extends Controller
     public function index()
     {
         $data_realisasi = DB::table('realiations')->get();
+        // $data_realisasi = DB::raw("(SELECT * from realiations where id in (select id from targets where nip_rated in 
+        // (select nip from users where users.nip='nip')))->get()");
         $data_target = Realiation::realisasi();
         return view(
             'realisasi/index',[
                 'data_realisasi' => $data_realisasi,
                 'data_target' => $data_target,
+                
 
             ]
            
@@ -27,7 +31,7 @@ class RealiationController extends Controller
 
     public function create()
     {
-        $target = Target::all();
+        $target = Target::where('nip_rated', Auth::id())->get();
         return view(
             'realisasi/form',
             [

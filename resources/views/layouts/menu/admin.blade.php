@@ -2,10 +2,10 @@
 <ul class="c-sidebar-nav">
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/home">
             <i class="c-sidebar-nav-icon cil-speedometer"></i>
-            Dashboard</a></li>
+            Dashboardaaa</a></li>
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/kelolauser">
-            <i class="c-sidebar-nav-icon cil-institution"></i>
-            Data Pegawai</a></li>
+        <i class="c-sidebar-nav-icon cil-institution"></i>
+        Data Pegawai</a></li>
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/unitkerja">
             <i class="c-sidebar-nav-icon cil-institution"></i>
             Kelola Unit Kerja</a></li>

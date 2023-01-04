@@ -57,15 +57,22 @@
                                     <td class="text-center">{!!\Carbon\Carbon::parse($data->tgl_mulai)->isoFormat('D MMMM Y') .' <br> s/d <br>'. \Carbon\Carbon::parse($data->tgl_selesai)->isoFormat('D MMMM Y')!!}</td>
                                     <td class="text-center">{{ $data->type }}</td>
                                     <td class="text-center">{{ $data->Parent_id }}</td>
-                                    <td class="align-middle">
-                                        @if($role_id == "3")
+                                    <td class="text-center">
+                                        @if ($data->status=='Approved')
+                                        <span class="badge rounded-pill bg-success">{{ ($data->status)}}</span>
+                                        @elseif ($data->status=='Not Approved')
+                                        <span class="badge rounded-pill bg-danger">{{ ($data->status)}}</span>
+                                        
+                                        @endif
+                                        
+                                        {{-- @if($role_id == "3")
                                         <select name="status" id="status" class="form-control" onchange="gantiStatusTarget('{{$data->id}}')">
                                             <option value="Approve" {{$data->status == "Approve" ? "selected":""}}>Approve</option>
                                             <option value="Not Approve" {{$data->status == "Not Approve" ? "selected":""}}>Not Approve</option>
                                         </select>
                                         @else
                                             {{$data->status}}
-                                        @endif
+                                        @endif --}}
 
                                     </td>
                                     <td class="text-center">

@@ -23,7 +23,7 @@ class SkpsController extends Controller
     public function index()
     {
 
-        $data = Skps::user_name()->limit(1)->get();
+        $data = Skps::with(['user_rated', 'unit_rated', 'rank_rated', 'position_rated', 'evaluator_position', 'evaluator_rank', 'evaluator_unit', 'evaluator_user'])->get();
         $login = Auth::user();
         $role_id = $login->role_id;
         return view(
@@ -191,26 +191,47 @@ class SkpsController extends Controller
 
        
 
-        $data['user'] = Skps::user_name()->where('skps.nip_rated', '=', $id)->get();
-        $data['data'] = Skps::user_name()->where('skps.nip_rated', '=', $id)->first();
+        // $data['user'] = Skps::user_name()->where('skps.nip_rated', '=', $id)->get();
+        // $data['data'] = Skps::user_name()->where('skps.nip_rated', '=', $id)->first();
         
-        $data['target'] = DB::table('skps')
-                        ->join('targets','skps.nip_rated','targets.nip_rated')
-                        ->join('realiations','targets.id','realiations.id')
-                        ->where('skps.nip_rated', $id)
-                        ->get();
+        // $data['target'] = DB::table('skps')
+        //                 ->join('targets','skps.nip_rated','targets.nip_rated')
+        //                 ->join('realiations','targets.id','realiations.id')
+        //                 ->where('skps.nip_rated', $id)
+        //                 ->get();
 
+        $skps = Skps::with('target.realisasi')->where('nip_rated', $id)->first();
+
+        // dd($skps);
+        foreach ($skps->target as $tk => $tv) {
+            if ($tv->type = 'Tugas Jabatan') {
+                $target['tugas_jabatan'] = $tv->with('realisasi')->where('type', 'Tugas Jabatan')->where('nip_rated', $id)->get();
+            }
+            if ($tv->type = 'Kreativitas') {
+                $target['kreativitas'] = $tv->with('realisasi')->where('type', 'Kreativitas')->where('nip_rated', $id)->get();
+            }
+            if ($tv->type = 'Tambahan') {
+                $target['tambahan'] = $tv->with('realisasi')->where('type', 'Tambahan')->where('nip_rated', $id)->get();
+            }
+            // $target[$tk] = $tv;
+        }
+        // dd($target['kreativitas']);
+        
+        // $data_json = json_encode($data);
+        // foreach ($data->target as $tk => $tv) {
+        //     $data_new[$tk]['target'] = $tv;
+        //     $data_new[$tk]['realisasi'] = $tv->realisasi;
+        // }
       
         // dd($data['target']);
         return view(
-            'skps/cetakRevisi',
-            $data
+            'skps/cetakRevisi', compact(['skps', 'target'])
         );
     }
 
     public function CetakNilai()
     {
-        $id = request()->get('id');
+        // $id = request()->get('id');
         // dd($id);
         $data['user'] = Skps::user_name()->where('skps.nip_rated', '=', $id)->get();
 

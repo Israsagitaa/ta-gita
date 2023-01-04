@@ -42,7 +42,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('skps/{skps}', 'SkpsController@update')->name('skps.update');
         Route::delete('skps/{skps}', 'SkpsController@destroy')->name('skps.destroy');
 
-      
+        //Target Bawahan
+        Route::get('targetbawahan', 'TargetBawahanController@index')->name('targetbawahan');
+        Route::get('targetbawahan/{nip}', 'TargetBawahanController@create')->name('statustarget');
+        Route::patch('targetbawahan/{nip}', 'TargetBawahanController@update')->name('updatestatus');
+
+       //Realisasi Bawahan
+       Route::get('realisasibawahan', 'RealiationBawahanController@index')->name('realiasibawahan');
+       Route::get('realisasibawahan/{nip}', 'RealiationBawahanController@create')->name('statusrealisasi');
 
 
         // Target

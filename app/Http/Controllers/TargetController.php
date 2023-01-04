@@ -6,6 +6,8 @@ use App\Target;
 use App\User;
 use App\Periode;
 use App\Output;
+use App\Realiation;
+// use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -18,14 +20,16 @@ class TargetController extends Controller
     public function index()
     {
         // $target = DB::table('targets')->get();
-        // // dd($target);
+        
         // $id = $target->id;
         // dd($id);
         // DB::table('targets')->update([
         //     'Parent_id' => $id
         // ]);
         $data['user'] = Target::target();
+        // dd($data);
         $login = Auth::user();
+       
         $data['role_id'] = $login->role_id;
         return view(
             'target/index',
@@ -166,9 +170,10 @@ class TargetController extends Controller
     public function gantiStatusTarget(Request $request)
     {
         $id = $request->id;
-        $getstatus = DB::table('targets')->where('id',$id)->first()->status;
+        $getstatus = DB::table('targets')->where('id',$id)->get()->status;
 
         // dd($getstatus);
+        
         
         if($getstatus  == "Approve"){
             $ket = "Not Approve";

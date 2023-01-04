@@ -113,12 +113,15 @@
             $no = 1;
             $total_full = 0;
             @endphp
-            @foreach($target as $data)
+            @foreach($target['kreativitas'] as $target)
             
+            @foreach($target->realisasi as $realisasi)
+            {{-- @dd($realisasi) --}}
             <?php 
-                $data_q = $data->quantity + $data->kuantitas;
-                $data_m = $data->mutu + $data->kredit;
-                $data_w = $data->time + $data->waktu;
+            
+                $data_q = $target->quantity + $realisasi->kuantitas;
+                $data_m = $target->mutu + $realisasi->kredit;
+                $data_w = $target->time + $realisasi->waktu;
                 $total = $data_q + $data_m + $data_w;
                 $total_b = $total / 5;
                 $total_h = $total_b;
@@ -127,21 +130,22 @@
 
             <tr height="10px">
                 <th>{{ $no++ }}</th>
-                <th>{{ $data->activities }}</th>
-                <th>{{ $data->ak }}</th>
-                <th>{{ $data->quantity }}</th>
-                <th>{{ $data->mutu }}</th>
-                <th>{{ $data->time }}</th>
-                <th>{{ $data->cost }}</th>
+                <th>{{ $target->activities }}</th>
+                <th>{{ $target->ak }}</th>
+                <th>{{ $target->quantity }}</th>
+                <th>{{ $target->mutu }}</th>
+                <th>{{ $target->time }}</th>
+                <th>{{ $target->cost }}</th>
 
-                <th>{{ $data->ak }}</th>
-                <th>{{ $data->kuantitas }}</th>
-                <th>{{ $data->kredit }}</th>
-                <th>{{ $data->waktu }}</th>
-                <th>{{ $data->biaya }}</th>
+                <th>{{ $realisasi->ak }}</th>
+                <th>{{ $realisasi->kuantitas }}</th>
+                <th>{{ $realisasi->kredit }}</th>
+                <th>{{ $realisasi->waktu }}</th>
+                <th>{{ $realisasi->biaya }}</th>
                 <th>{{ $total }}</th>
                 <th>{{ $total_b }}</th>
             </tr>
+                @endforeach
             @endforeach
 
             <tr>

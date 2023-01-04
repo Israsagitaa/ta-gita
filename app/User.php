@@ -59,9 +59,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Skps::class, 'nip_evaluator', 'nip');
     }
+    public function skps()
+    {
+        return $this->hasOne(Skps::class, 'nip_rated', 'nip');
+    }
+    public function target()
+    {
+        return $this->hasMany(Target::class, 'nip_rated','nip')->orderBy('created_at', 'desc');
+
+    }
+
+
 
     public function unitTugas()
     {
+        
         $hasil = [];
         $unit_id = $this->unit_id;
         $connection = config('database.default');

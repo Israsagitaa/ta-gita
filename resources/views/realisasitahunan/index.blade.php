@@ -14,8 +14,8 @@
                                 <a href="{{ route('realisasitahunan.create') }}" class="btn btn-primary">Tambah Data</a>
                                 {{-- rubah href seleai --}}
                             </div>
-                        </div>
                     </h5>
+                        </div>
                     <div class="card-body">
                         <table class="table table-responsive-sm table-striped">
                             <thead>

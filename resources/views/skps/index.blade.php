@@ -53,11 +53,11 @@
                                 @foreach ($user as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ $data->dinilai }}</td>
+                                    <td class="text-center">{{ $data->user_rated->name }}</td>
                                     <td class="text-center">{!!\Carbon\Carbon::parse($data->tgl_mulai)->isoFormat('D MMMM Y') .' <br> s/d <br>'. \Carbon\Carbon::parse($data->tgl_selesai)->isoFormat('D MMMM Y')!!}</td>
-                                    <td class="text-center">{{ $data->posisi_dinilai }}</td>
-                                    <td class="text-center">{{ $data->panggol_dinilai }}</td>
-                                    <td class="text-center">{{ $data->unit_dinilai }}</td>
+                                    <td class="text-center">{{ $data->position_rated->name }}</td>
+                                    <td class="text-center">{{ $data->rank_rated->name }}</td>
+                                    <td class="text-center">{{ $data->unit_rated->name }}</td>
                                     <td class="text-center">{{ $data->commitment }}</td>
                                     <td class="text-center">{{ $data->discipline }}</td>
                                     <td class="text-center">{{ $data->cooperation }}</td>
@@ -70,10 +70,10 @@
                                     <td class="text-center">{{ $data->recommendation }}</td>
                                     <td class="text-center">{{ $data->start_date }}</td>
                                     <td class="text-center">{{ $data->date_given_to_superiors }}</td>
-                                    <td class="text-center">{{ $data->penilai }}</td>
-                                    <td class="text-center">{{ $data->posisi_penilai }}</td>
-                                    <td class="text-center">{{ $data->panggol_penilai }}</td>
-                                    <td class="text-center">{{ $data->unit_penilai }}</td>
+                                    <td class="text-center">{{ $data->evaluator_user->name }}</td>
+                                    <td class="text-center">{{ $data->evaluator_position->name }}</td>
+                                    <td class="text-center">{{ $data->evaluator_rank->name }}</td>
+                                    <td class="text-center">{{ $data->evaluator_unit->name }}</td>
                                     <td class="text-center">
                                  
                                        

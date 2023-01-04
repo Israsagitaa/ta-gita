@@ -3,6 +3,9 @@
     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/home">
             <i class="c-sidebar-nav-icon cil-speedometer"></i>
             Dashboard</a></li>
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/kelolauser">
+                <i class="c-sidebar-nav-icon cil-institution"></i>
+                Data Pegawai</a></li>
   
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
             <i class="c-sidebar-nav-icon cil-layers"></i>
@@ -16,6 +19,16 @@
             <!-- <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{url('targettahunan')}}"><span class="c-sidebar-nav-icon"></span>Target Tahunan </a></li> -->
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{url('realiation')}}"><span class="c-sidebar-nav-icon"></span>Realisasi Tahunan </a></li>
             <!-- <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{url('/')}}"><span class="c-sidebar-nav-icon"></span>Nilai Capaian </a></li> -->
+           
+            
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{url('targetbawahan')}}"><span class="c-sidebar-nav-icon"></span> Target Bawahan
+             </a></li>
+             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{url('realisasibawahan')}}"><span class="c-sidebar-nav-icon"></span> Realisasi Bawahan
+             </a></li>
+
+
+
+
             <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{route('skps')}}"><span class="c-sidebar-nav-icon"></span>SKP </a></li>
             
             <!-- <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{route('skps.cetak')}}"><span class="c-sidebar-nav-icon"></span>Form SKP </a></li> -->

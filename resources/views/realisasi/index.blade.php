@@ -33,7 +33,7 @@
                                 {{-- rubah selesai --}}
                             </thead>
                             <tbody>
-                                @foreach ($data_realisasi as $no => $data)
+                                @foreach ($data_target as $no => $data)
                                 <tr>
                                     <td class="text-center">{{ $no + 1 }}</td>
                                     <td class="text-center">{{ $data->id }}</td>

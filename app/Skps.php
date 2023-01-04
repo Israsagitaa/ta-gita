@@ -67,5 +67,42 @@ class Skps extends Model
             ->join('targets','targets.nip_rated','skps.nip_rated' ,'LIMIT 1' );
     }
 
-   
+    public function user(){
+        return $this->belongsTo(User::class, 'nip');
+    }
+    public function target(){
+        return $this->hasMany(Target::class, 'nip_rated');
+    }
+
+    public function user_rated(){
+        return $this->belongsTo(User::class, 'nip_rated');
+    }
+
+    public function unit_rated(){
+        return $this->belongsTo(Unit::class, 'rated_unit_id');
+    }
+
+    public function rank_rated(){
+        return $this->belongsTo(RankGroup::class, 'rated_rankgroup_id');
+    }
+
+    public function position_rated(){
+        return $this->belongsTo(Position::class, 'rated_position_id');
+    }
+
+    public function evaluator_position(){
+        return $this->belongsTo(Position::class, 'evaluator_position_id');
+    }
+
+    public function evaluator_rank(){
+        return $this->belongsTo(RankGroup::class, 'evaluator_rankgroup_id');
+    }
+
+    public function evaluator_unit(){
+        return $this->belongsTo(Unit::class, 'evaluator_unit_id');
+    }
+
+    public function evaluator_user(){
+        return $this->belongsTo(User::class, 'nip_evaluator');
+    }
 }
